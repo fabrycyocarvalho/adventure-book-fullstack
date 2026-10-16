@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+:root {
+    --app-bg: #f9f7f6;
+    --app-bg-hover: #f0ece8;
+
+    --app-text: #433024;
+    --app-text-secondary: #978980;
+    --app-text-secondary-hover: #7d6f66;
+
+    --app-accent: #f3ebe1;
+    --app-accent-border: #f0c443;
+    --app-accent-border-hover: #d9a726;
+}
+
+html,
+body {
+    color: var(--app-text-secondary);
+    background: var(--app-bg);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+
+    &.small {
+        width: 18px;
+        height: 18px;
+    }
+
+    &.huge {
+        width: 44px;
+        height: 44px;
+    }
+}

@@ -1,0 +1,27 @@
+info:
+  name: add option
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: http://localhost:8080/api/v1/sections/1001/options
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Seguir pela trilha iluminada à esquerda",
+        "gotoId": 1003,
+        "consequence": {
+          "type": "LOSE_HEALTH",
+          "value": "2",
+          "text": "Você arranha os braços em galhos espinhosos."
+        }  
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

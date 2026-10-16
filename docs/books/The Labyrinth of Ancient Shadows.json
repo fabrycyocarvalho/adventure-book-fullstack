@@ -1,0 +1,520 @@
+{
+  "title": "The Labyrinth of Ancient Shadows",
+  "author": "Matheus Valente",
+  "description": "A dangerous journey through the catacombs of the Forgotten Temple, where choices lead to fortune and survival.",
+  "difficulty": "HARD",
+  "genre": "Dark Fantasy",
+  "tags": ["adventure", "rpg", "survival", "fantasy"],
+  "sections": [
+    {
+      "id": 1001,
+      "text": "You stand before the corrupted iron gates of the Forgotten Temple. A dense fog wraps around your boots and the sound of dragging chains echoes from within.",
+      "type": "BEGIN",
+      "options": [
+        {
+          "description": "Force the main gate open and rush inside",
+          "tip": "It might be a bit rough, but it's direct.",
+          "gotoId": 1002,
+          "consequence": {
+            "value": "1",
+            "text": "The rusty gate gives way abruptly, giving you a minor scrape.",
+            "type": "LOSE_HEALTH"
+          }
+        },
+        {
+          "description": "Look for a discreet side entrance",
+          "tip": "Requires caution.",
+          "gotoId": 1003,
+          "consequence": {
+            "value": "2",
+            "text": "You find a hidden path and feel a sudden surge of renewed energy.",
+            "type": "GAIN_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1002,
+      "text": "You enter the main hall. Headless statues flank the dark corridor stretching out before you.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Follow the central corridor lit by magical torches",
+          "tip": "It seems like the fastest way.",
+          "gotoId": 1004,
+          "consequence": {
+            "value": "3",
+            "text": "The magic in the torches revitalizes your body and spirit.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Examine the base of one of the statues",
+          "tip": "There might be something hidden.",
+          "gotoId": 1005,
+          "consequence": {
+            "value": "2",
+            "text": "A minor dart trap goes off, but you dodge most of it with a tiny scratch.",
+            "type": "LOSE_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1003,
+      "text": "You bypass the wall and find a narrow crevice leading into a dusty pantry of the temple.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Search the ancient food jars",
+          "tip": "Perhaps you will find something useful.",
+          "gotoId": 1006,
+          "consequence": {
+            "value": "4",
+            "text": "You find a forgotten medicinal tonic and recover your strength.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Go straight for the back door leading to the sanctuary",
+          "tip": "Avoids wasting time.",
+          "gotoId": 1007,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1004,
+      "text": "The central corridor ends at a circular chamber with an unbridgeable abyss. There is a narrow stone bridge and an improvised rope zipline.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Cross the stone bridge carefully",
+          "tip": "The stone looks slippery.",
+          "gotoId": 1008,
+          "consequence": {
+            "value": "3",
+            "text": "Crossing safely fills you with confidence and vigor.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Use the rope zipline",
+          "tip": "Fast, but risky.",
+          "gotoId": 1009,
+          "consequence": {
+            "value": "2",
+            "text": "The rope frays a bit midway, but you land safely on your feet.",
+            "type": "LOSE_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1005,
+      "text": "By dodging the darts, you discover a secret passage beneath the statue's floor leading down into the crypts.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Descend the spiral crypt stairs",
+          "tip": "The air down here is freezing.",
+          "gotoId": 1010,
+          "consequence": {
+            "value": "2",
+            "text": "A warm pocket of air inside the crypt warms you up.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Return to the main hall",
+          "tip": "Better not risk the crypt right now.",
+          "gotoId": 1002,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1006,
+      "text": "Refreshed by the tonic, you search the pantry better and find a heavy iron key.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Use the key on the locked north door",
+          "tip": "The key seems to fit perfectly.",
+          "gotoId": 1011,
+          "consequence": null
+        },
+        {
+          "description": "Head down the dark eastern corridor",
+          "tip": "Leave the door aside.",
+          "gotoId": 1016,
+          "consequence": {
+            "value": "3",
+            "text": "You discover a hidden stash of energy fruits along the way.",
+            "type": "GAIN_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1007,
+      "text": "You reach an underground crossroads where the smell of sulfur is strong.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Take the left tunnel where warmth radiates from",
+          "tip": "Could be lava or fire.",
+          "gotoId": 1012,
+          "consequence": {
+            "value": "1",
+            "text": "A brief wave of intense heat singes your cloak slightly.",
+            "type": "LOSE_HEALTH"
+          }
+        },
+        {
+          "description": "Take the right tunnel with a fresh breeze",
+          "tip": "Fresh air is a good sign.",
+          "gotoId": 1017,
+          "consequence": {
+            "value": "4",
+            "text": "The refreshing breeze clears your mind and restores your stamina.",
+            "type": "GAIN_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1008,
+      "text": "You cross the bridge successfully and find a glowing magical water fountain in the center of the next room.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Drink from the fountain water",
+          "tip": "Looks refreshing.",
+          "gotoId": 1014,
+          "consequence": {
+            "value": "5",
+            "text": "The sacred water heals all your recent fatigue and wounds.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Ignore the fountain and keep walking",
+          "tip": "Do not trust unknown magic.",
+          "gotoId": 1018,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1009,
+      "text": "Despite the slight stumble, you manage to stand up and spot a large carved wooden door ahead.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Push the wooden door open",
+          "tip": "Time to face what lies inside.",
+          "gotoId": 1015,
+          "consequence": {
+            "value": "2",
+            "text": "An inspiring aura behind the door boosts your confidence.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Inspect the side carvings on the wall",
+          "tip": "Ancient scripts might offer clues.",
+          "gotoId": 1019,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1010,
+      "text": "In the crypts, open tombs reveal the remains of ancient temple priests.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Search the funeral altars for relics",
+          "tip": "Desecration might have a high price.",
+          "gotoId": 1020,
+          "consequence": {
+            "value": "2",
+            "text": "A minor guardian spirit strikes you before fading away.",
+            "type": "LOSE_HEALTH"
+          }
+        },
+        {
+          "description": "Walk through the crypt silently without touching anything",
+          "tip": "Respect the dead.",
+          "gotoId": 1021,
+          "consequence": {
+            "value": "3",
+            "text": "Peaceful silence calms your nerves, restoring your health.",
+            "type": "GAIN_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1016,
+      "text": "The eastern corridor opens up into an abandoned armorage filled with rusted shields and broken spears.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Search the weapon racks for a usable dagger",
+          "tip": "A weapon could protect you later.",
+          "gotoId": 1022,
+          "consequence": {
+            "value": "2",
+            "text": "You find a well-balanced ceremonial dagger and feel safer.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Ignore the armorage and climb up a winding staircase",
+          "tip": "Stairs usually lead to higher levels.",
+          "gotoId": 1023,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1017,
+      "text": "The right tunnel leads you into an indoor overgrown garden where glowing mushrooms illuminate the soil.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Harvest some glowing blue mushrooms",
+          "tip": "They look like natural medicine.",
+          "gotoId": 1024,
+          "consequence": {
+            "value": "4",
+            "text": "Eating a fresh mushroom soothes your sore muscles.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Cross the garden quickly toward a stone archway",
+          "tip": "Avoid touching strange flora.",
+          "gotoId": 1025,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1018,
+      "text": "By bypassing the fountain, you enter a quiet gallery lined with ancient tapestries depicting legendary battles.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Rest against a tapestry for a brief moment",
+          "tip": "Your feet need a short break.",
+          "gotoId": 1022,
+          "consequence": {
+            "value": "3",
+            "text": "Taking a short breather revitalizes your stamina.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Keep walking briskly down the gallery",
+          "tip": "Keep moving forward.",
+          "gotoId": 1023,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1019,
+      "text": "The wall carvings reveal a hidden mechanism that shifts a heavy stone block out of your path.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Step through the newly opened passage",
+          "tip": "Where does this shortcut lead?",
+          "gotoId": 1024,
+          "consequence": {
+            "value": "2",
+            "text": "A sudden rush of clean air clears out the stale dungeon dust.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Stay on the main path",
+          "tip": "Stick to the known route.",
+          "gotoId": 1025,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1020,
+      "text": "Fleeing the guardian spirit, you stumble into a subterranean balcony overlooking a vast cavernous hall.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Look for a safe descent ramp on the balcony",
+          "tip": "Careful footing is key.",
+          "gotoId": 1023,
+          "consequence": null
+        },
+        {
+          "description": "Search the balcony remnants for loose valuables",
+          "tip": "Greed can sometimes pay off.",
+          "gotoId": 1025,
+          "consequence": {
+            "value": "1",
+            "text": "A loose stone crumbles under your heel, straining your ankle slightly.",
+            "type": "LOSE_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1021,
+      "text": "Walking silently brings you to a quiet resting nook used by ancient monks centuries ago.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Sit on the stone meditation bench",
+          "tip": "Absorb the tranquil atmosphere.",
+          "gotoId": 1024,
+          "consequence": {
+            "value": "4",
+            "text": "Deep meditation restores your mental focus and heals your body.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Check behind the stone bench",
+          "tip": "Could be a hidden compartment.",
+          "gotoId": 1025,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1022,
+      "text": "Equipped with your findings, you reach a junction where two metallic doors face each other.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Open the left metallic door with silver engravings",
+          "tip": "Looks ornate and important.",
+          "gotoId": 1014,
+          "consequence": {
+            "value": "2",
+            "text": "A soft healing hum resonates from the door frame as you pass.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Open the right metallic door with bronze markings",
+          "tip": "Simpler and sturdier.",
+          "gotoId": 1015,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1023,
+      "text": "You climb to the upper tier of the temple structure, where daylight filters through cracks in the high ceiling.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Bask in the warm shaft of sunlight",
+          "tip": "Feel the natural warmth.",
+          "gotoId": 1014,
+          "consequence": {
+            "value": "5",
+            "text": "The natural sunlight completely reinvigorates your tired body.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Head straight toward the illuminated exit arch",
+          "tip": "The end is near.",
+          "gotoId": 1015,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1024,
+      "text": "You find yourself standing on a high stone bridge overlooking the main shrine from above.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Descend the grand marble stairs directly to the shrine",
+          "tip": "A grand entrance.",
+          "gotoId": 1011,
+          "consequence": null
+        },
+        {
+          "description": "Take a side balcony path for a better vantage point",
+          "tip": "Observe the surroundings.",
+          "gotoId": 1013,
+          "consequence": {
+            "value": "3",
+            "text": "Getting a clear view of the layout fills you with determination.",
+            "type": "GAIN_HEALTH"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1025,
+      "text": "Navigating the final stretch of winding corridors, you hear the familiar sounds of the outside world echoing near.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Run eagerly toward the echoing sounds",
+          "tip": "Freedom is close!",
+          "gotoId": 1015,
+          "consequence": {
+            "value": "3",
+            "text": "The thrill of approaching freedom fills you with fresh energy.",
+            "type": "GAIN_HEALTH"
+          }
+        },
+        {
+          "description": "Walk steadily and carefully until the very end",
+          "tip": "Better safe than sorry.",
+          "gotoId": 1013,
+          "consequence": null
+        }
+      ]
+    },
+    {
+      "id": 1011,
+      "text": "The door opens to reveal the temple's central altar, where the Great Ruby is safely kept.",
+      "type": "END",
+      "options": []
+    },
+    {
+      "id": 1012,
+      "text": "Overwhelmed by minor hazards and exhaustion, you reach a dead-end tunnel to rest.",
+      "type": "END",
+      "options": []
+    },
+    {
+      "id": 1013,
+      "text": "The cool tunnel leads you directly to the temple's main treasure chamber.",
+      "type": "END",
+      "options": []
+    },
+    {
+      "id": 1014,
+      "text": "With your energy fully renewed by the fountain, you open the golden door leading out of the cursed complex towards freedom.",
+      "type": "END",
+      "options": []
+    },
+    {
+      "id": 1015,
+      "text": "You proceed cautiously and find the escape route leading you safely out of the ominous complex alive.",
+      "type": "END",
+      "options": []
+    }
+  ]
+}

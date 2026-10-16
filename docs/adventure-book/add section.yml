@@ -1,0 +1,22 @@
+info:
+  name: add section
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://localhost:8080/api/v1/books/d5b87802-287d-4026-97f4-f2c242d0c740/sections
+  body:
+    type: json
+    data: |-
+      {
+        "text": "A escuridão da trilha aumenta até que você encontra uma antiga cabana abandonada.",
+        "type": "END"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

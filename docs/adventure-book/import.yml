@@ -1,0 +1,22 @@
+info:
+  name: import
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/api/v1/books/import
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - C:\Users\fcrei\Desktop\adventure-book-fullstack\docs\JSON_EXEMPLO_VALIDO.json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

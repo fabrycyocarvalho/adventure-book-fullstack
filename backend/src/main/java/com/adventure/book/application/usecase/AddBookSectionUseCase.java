@@ -26,7 +26,7 @@ public class AddBookSectionUseCase {
                 .findById(bookId)
                 .orElseThrow(() -> new BookNotFoundException(bookId.toString()));
 
-        Integer sectionId = sectionRepository.getNextSectionId();
+        Integer sectionId = sectionRepository.getNextSectionId(bookId);
         Section section = book.addSection(sectionId, command.text(), command.type());
         bookRepository.save(book);
         return section;

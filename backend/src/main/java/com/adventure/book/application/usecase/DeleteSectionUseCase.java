@@ -1,5 +1,6 @@
 package com.adventure.book.application.usecase;
 
+import com.adventure.book.application.command.DeleteSectionCommand;
 import com.adventure.book.domain.exception.SectionNotFoundException;
 import com.adventure.book.domain.model.Section;
 import com.adventure.book.domain.repository.SectionRepository;
@@ -14,9 +15,10 @@ public class DeleteSectionUseCase {
     private final SectionRepository sectionRepository;
 
     @Transactional
-    public void execute(Integer sectionId) {
-        Section book = sectionRepository
-                .findById(sectionId).orElseThrow(() -> new SectionNotFoundException(sectionId.toString()));
-        sectionRepository.delete(book);
+    public void execute(DeleteSectionCommand command) {
+        Section section = sectionRepository
+                .findById(command.sectionId(), command.bookId())
+                .orElseThrow(() -> new SectionNotFoundException(command.sectionId().toString()));
+        sectionRepository.delete(section, command.bookId());
     }
 }

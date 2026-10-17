@@ -1,23 +1,25 @@
 package com.adventure.book.presentation.controller;
 
 import com.adventure.book.application.command.AddBookSectionCommand;
+import com.adventure.book.application.command.AddSectionOptionCommand;
 import com.adventure.book.application.command.CreateBookCommand;
-import com.adventure.book.application.usecase.AddBookSectionUseCase;
-import com.adventure.book.application.usecase.CreateBookUseCase;
-import com.adventure.book.application.usecase.DeleteBookUseCase;
-import com.adventure.book.application.usecase.StartBookImportUseCase;
+import com.adventure.book.application.command.DeleteSectionCommand;
+import com.adventure.book.application.usecase.*;
 import com.adventure.book.domain.exception.BookNotFoundException;
+import com.adventure.book.domain.model.Consequence;
 import com.adventure.book.domain.model.Difficulty;
 import com.adventure.book.domain.repository.BookRepository;
 import com.adventure.book.presentation.dto.*;
 import com.adventure.book.presentation.mapper.BookMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @RestController
@@ -28,6 +30,8 @@ public class BookController {
     private final StartBookImportUseCase startBookImportUseCase;
     private final DeleteBookUseCase deleteBookUseCase;
     private final AddBookSectionUseCase addBookSectionUseCase;
+    private final AddSectionOptionUseCase addSectionOptionUseCase;
+    private final DeleteSectionUseCase deleteSectionUseCase;
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
 
@@ -96,5 +100,29 @@ public class BookController {
         return bookMapper.toSectionResponse(
                 addBookSectionUseCase.execute(new AddBookSectionCommand(bookId, request.text(), request.type()))
         );
+    }
+
+    @PostMapping(value = "/{bookId}/sections/{sectionId}/options")
+    public SectionResponse addSectionOption(@PathVariable UUID bookId, @PathVariable Integer sectionId, @Valid @RequestBody OptionRequest request) {
+        return bookMapper.toSectionResponse(
+                addSectionOptionUseCase.execute(
+                        new AddSectionOptionCommand(
+                                bookId,
+                                sectionId,
+                                request.description(),
+                                request.gotoId(),
+                                request.tip(),
+                                parseConsequence(request.consequence()))
+                )
+        );
+    }
+
+    @DeleteMapping("/{bookId}/sections/{sectionId}")
+    public void remove(@PathVariable Integer sectionId, @PathVariable UUID bookId) {
+        deleteSectionUseCase.execute(new DeleteSectionCommand(sectionId, bookId));
+    }
+
+    private static @Nullable Consequence parseConsequence(ConsequenceRequest req) {
+        return Objects.nonNull(req) ? new Consequence(req.value(), req.text(), req.type()) : null;
     }
 }

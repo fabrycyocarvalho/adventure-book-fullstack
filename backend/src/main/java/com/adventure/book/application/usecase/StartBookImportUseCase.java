@@ -39,7 +39,7 @@ public class StartBookImportUseCase {
     private void validate(Book book) {
         //Book has none, or more than one beginning
         long countBegging = book.sections().stream().map(Section::type).filter(SectionType.BEGIN::equals).count();
-        if (countBegging == 0 || countBegging > 2) {
+        if (countBegging == 0 || countBegging > 1) {
             throw new BusinessRuleViolationException("IMPORT_FILE_INVALID", "Book has none, or more than one beginning");
         }
 
@@ -68,7 +68,7 @@ public class StartBookImportUseCase {
         boolean sectionHasNoOptions = book.sections()
                 .stream()
                 .filter(section -> SectionType.NODE.equals(section.type()))
-                .allMatch(p -> p.options().isEmpty());
+                .anyMatch(p -> p.options().isEmpty());
         if (sectionHasNoOptions) {
             throw new BusinessRuleViolationException("IMPORT_FILE_INVALID", "A non-ending section has no options");
         }

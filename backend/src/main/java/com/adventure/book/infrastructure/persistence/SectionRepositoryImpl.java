@@ -21,29 +21,30 @@ public class SectionRepositoryImpl implements SectionRepository {
     private final HTreeMap<UUID, Book> books;
 
     @Override
-    public Integer getNextSectionId() {
-        return getSectionStream()
+    public Integer getNextSectionId(UUID bookId) {
+        return getSectionStream(bookId)
                 .map(Section::id)
                 .mapToInt(id -> id)
                 .max()
                 .orElse(1) + 1;
     }
 
-    private @NonNull Stream<Section> getSectionStream() {
+    private @NonNull Stream<Section> getSectionStream(UUID bookId) {
         return books.values().stream()
+                .filter(book -> book.id().equals(bookId))
                 .flatMap(book -> book.sections().stream());
     }
 
     @Override
-    public Optional<Section> findById(Integer sectionId) {
-        return getSectionStream()
+    public Optional<Section> findById(Integer sectionId, UUID bookId) {
+        return getSectionStream(bookId)
                 .filter(section -> section.id().equals(sectionId))
                 .findFirst();
     }
 
     @Override
-    public void save(Section update) {
-        findBookBySectionId(update.id()).ifPresent(book -> {
+    public void save(Section update, UUID bookId) {
+        findBookBySectionId(update.id(), bookId).ifPresent(book -> {
             book.sections().remove(update);
             book.sections().add(update);
             books.put(book.id(), book);
@@ -52,16 +53,17 @@ public class SectionRepositoryImpl implements SectionRepository {
     }
 
     @Override
-    public void delete(Section section) {
-        findBookBySectionId(section.id()).ifPresent(book -> {
+    public void delete(Section section, UUID bookId) {
+        findBookBySectionId(section.id(), bookId).ifPresent(book -> {
             book.sections().remove(section);
             books.put(book.id(), book);
             db.commit();
         });
     }
 
-    private Optional<Book> findBookBySectionId(Integer sectionId) {
+    private Optional<Book> findBookBySectionId(Integer sectionId, UUID bookId) {
         return books.values().stream()
+                .filter(book -> book.id().equals(bookId))
                 .filter(book -> book
                         .sections()
                         .stream()

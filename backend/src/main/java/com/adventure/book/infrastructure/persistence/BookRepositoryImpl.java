@@ -78,6 +78,7 @@ public class BookRepositoryImpl implements BookRepository {
     @Override
     public void delete(Book book) {
         books.remove(book.id());
+        db.commit();
     }
 
     @Override

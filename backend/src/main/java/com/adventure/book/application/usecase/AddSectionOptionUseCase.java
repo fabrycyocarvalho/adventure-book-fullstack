@@ -18,11 +18,11 @@ public class AddSectionOptionUseCase {
     public Section execute(AddSectionOptionCommand command) {
         Integer sectionId = command.sectionId();
         Section section = sectionRepository
-                .findById(sectionId)
+                .findById(sectionId, command.bookId())
                 .orElseThrow(() -> new SectionNotFoundException(sectionId.toString()));
 
         section.addOption(command.description(), command.tip(), command.gotoId(), command.consequence());
-        sectionRepository.save(section);
+        sectionRepository.save(section, command.bookId());
         return section;
     }
 }

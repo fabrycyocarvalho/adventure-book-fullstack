@@ -26,8 +26,8 @@ export class GameSessionService {
         return this.http.get<GameSession>(`${this.API}/${this.username}/${bookId}`);
     }
 
-    clearProgress() {
+    clearProgress(bookId:string) {
         return this.http
-            .delete<void>(`${this.API}/${this.username}`);
+            .delete<void>(`${this.API}/${this.username}/${bookId}`);
     }
 }

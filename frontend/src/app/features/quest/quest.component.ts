@@ -218,7 +218,7 @@ export class QuestComponent implements OnInit {
   private clearProgress() {
     this.loading.set(true);
     this.gameSessionService
-      .clearProgress()
+      .clearProgress(this.bookId())
       .subscribe(() => this.loading.set(false));
 
   }
